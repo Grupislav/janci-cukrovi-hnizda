@@ -1,0 +1,12 @@
+# Lokální konfigurace (DB, e-maily, příznak provozu)
+/config.php
+
+# Fotogalerie (nahraj zvlášť na hosting)
+/foto*-full.jpg
+/foto*-thumb.jpg
+
+.idea/
+.vscode/
+*.swp
+Thumbs.db
+.DS_Store

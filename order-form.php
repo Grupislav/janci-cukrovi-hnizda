@@ -1,33 +1,18 @@
-﻿<?php
-// --- NASTAVENÍ PŘIPOJENÍ K DATABÁZI ---
-$host = 'md394.wedos.net';
-$db   = 'd199169_cukrovi';
-$user = 'w199169_cukrovi';
-$pass = '3JdS9TXD';
-$charset = 'utf8mb4';
-
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-];
-
-try {
-    $pdo = new PDO($dsn, $user, $pass, $options);
-} catch (\PDOException $e) {
-    throw new \PDOException($e->getMessage(), (int)$e->getCode());
+<?php
+/**
+ * Hlavní stránka objednávkového formuláře – načítá se z index.php po kontrole configu.
+ */
+if (!isset($pdo) || !$pdo instanceof PDO) {
+    http_response_code(503);
+    exit;
 }
 
-// --- Načtení dat pro formulář ---
-// 1. Všechny produkty
 $products = $pdo->query('SELECT id, name FROM products ORDER BY name')->fetchAll();
 
-// 2. Všechny velikosti a jejich přiřazení k produktům
 $product_sizes_query = $pdo->query('
-    SELECT 
-        ps.product_id, 
-        s.id as size_id, 
+    SELECT
+        ps.product_id,
+        s.id as size_id,
         s.name as size_name,
         ps.price
     FROM product_sizes ps
@@ -49,7 +34,7 @@ foreach ($product_sizes_query as $row) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Objednávkový formulář</title>
+    <title>Objednávkový formulář – Janči cukroví</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.2/simple-lightbox.min.css">
 </head>
@@ -102,11 +87,11 @@ foreach ($product_sizes_query as $row) {
                     <button type="button" id="add-item-btn">Přidat</button>
                 </div>
             </fieldset>
-            
+
             <div class="order-total">
                 <h2>Celková cena: <span id="total-price-display">0 Kč</span></h2>
             </div>
-            
+
             <div class="order-summary">
                 <h2>Položky v objednávce</h2>
                 <div id="order-items-container">
@@ -123,11 +108,10 @@ foreach ($product_sizes_query as $row) {
     </div>
 
     <script>
-        // Předání dat z PHP do JavaScriptu
         const productSizesMap = <?= json_encode($product_sizes_map) ?>;
     </script>
     <script src="script.js"></script>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.2/simple-lightbox.min.js"></script>
 </body>
 </html>
