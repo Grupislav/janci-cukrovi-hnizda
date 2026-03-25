@@ -11,6 +11,6 @@
 </head>
 <body>
     <h1>Formulář teď nejde načíst</h1>
-    <p>Došlo k problému s připojením. Zkuste to prosím za chvíli znovu.</p>
+    <p>Nepodařilo se nám připojit k databázi s nabídkou — zkuste prosím stránku za chvíli znovu. Omlouváme se za komplikaci.</p>
 </body>
 </html>
