@@ -1,0 +1,226 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    
+    /* TOTO JSOU DVÌ NOVÉ A DÙLEŽITÉ VLASTNOSTI */
+    flex-direction: column; /* Seøadí prvky pod sebe */
+    align-items: center;    /* Vycentruje je horizontálnì */
+
+    padding: 20px;
+}
+
+.container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 700px;
+}
+
+h1, h2 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    height: 42px; /* Sjednotíme výšku pro lepší zarovnání */
+}
+
+select[disabled] {
+    background-color: #eee;
+}
+
+fieldset {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+legend {
+    font-weight: bold;
+    color: #3498db;
+}
+
+.product-adder {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: flex-end; /* <-- Zmìòte 'baseline' zpìt na 'flex-end' */
+}
+
+.product-adder .form-group {
+    flex: 1;
+    min-width: 150px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+button#add-item-btn {
+    background-color: #2ecc71;
+    color: white;
+    height: 42px; /* Sjednotíme výšku pro lepší zarovnání */
+}
+
+button#add-item-btn:hover {
+    background-color: #27ae60;
+}
+
+button[type="submit"] {
+    width: 100%;
+    background-color: #3498db;
+    color: white;
+    padding: 15px;
+}
+
+button[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+.order-summary {
+    margin-top: 20px;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.order-item:last-child {
+    border-bottom: none;
+}
+
+.order-item span {
+    flex: 1;
+}
+
+/* OPRAVA TLAÈÍTKA S KØÍŽKEM */
+.remove-item-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    
+    /* Nový a lepší zpùsob centrování */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Vylepšení vzhledu køížku */
+    font-size: 18px;
+    font-weight: bold;
+    padding-bottom: 2px; /* Jemné doladìní vertikální pozice køížku */
+}
+
+#form-message {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+.success { color: #27ae60; }
+.error { color: #e74c3c; }
+
+/* --- STYLY PRO LIGHTBOX GALERII --- */
+
+.gallery-container {
+    width: 100%;
+    max-width: 1000px; /* Stejná šíøka jako formuláø pro jednotný vzhled */
+    margin: 0 auto 30px auto;
+    display: flex; /* Pro rozložení náhledù vedle sebe */
+    //flex-wrap: wrap; /* Aby se náhledy zalomily na nový øádek */
+    gap: 10px; /* Mezera mezi náhledy */
+    justify-content: center; /* Vycentrování náhledù */
+    padding: 15px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-container a {
+    display: block;
+    width: 180px; /* Pevná šíøka pro náhled */
+    height: 120px; /* Pevná výška pro náhled */
+    overflow: hidden; /* Pro oøíznutí obrázkù, pokud jsou vìtší */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.gallery-container a:hover {
+    transform: translateY(-3px); /* Malý efekt pøi najetí myší */
+}
+
+.gallery-container img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Zajistí, že se náhled hezky oøízne, nezkreslí */
+}
+
+.order-total {
+    margin: 25px 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.order-total h2 {
+    margin: 0;
+    color: #333;
+    font-size: 1.5em;
+}
+
+.order-total h2 span {
+    color: #3498db;
+    font-weight: bold;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 1em;
+    resize: vertical; /* Povolí pouze vertikální zmìnu velikosti */
+    min-height: 80px;
+}
